@@ -1,0 +1,24 @@
+"""
+LeetCode {ID}: {Problem Title}
+{Link to Problem}
+
+📝 Summary:
+Short one-line description of the problem.
+
+🧠 Thought Process:
+- Step-by-step intuition / brute force idea
+- Transition to optimized idea (if applicable)
+
+✅ Solution Approach:
+- Core logic / algorithm used
+- Time and space complexity
+
+🐞 Mistakes & Gotchas:
+- Any bugs you hit or corner cases to watch out for
+
+🎓 What I Learned:
+- Key takeaways or new patterns learned
+
+🔁 Revisit:
+[Yes/No] — optional flag to mark if it should be reviewed again
+"""
