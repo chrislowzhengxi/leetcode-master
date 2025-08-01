@@ -14,7 +14,7 @@ def generate(tracker_path, problem_id):
     with open(tracker_path, newline='') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if row['ID'] != problem_id:
+            if row['ID'].strip() != problem_id:
                 continue
 
             topic = row['Topic'].strip()
