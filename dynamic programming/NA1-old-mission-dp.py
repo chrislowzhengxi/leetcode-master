@@ -3,7 +3,7 @@ Hackerrank NA: Old Mission DP
 Photos in /Uchicago Miscellaneous/Hackerrank OA/Old Mission DP
 
 
-🧩 Problem Overview: Count Good Arrays
+🧩 Problem Overview: Counting Good Arrays
 
 You're given an array arr of length n, where:
 Each element is either 0 (can be changed) or a positive integer (must remain unchanged).
