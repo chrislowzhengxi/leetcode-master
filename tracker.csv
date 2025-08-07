@@ -1,8 +1,9 @@
 Date,ID,Title,Topic,Difficulty,Status,Revisit
-7/28/25,228, Summary Ranges, arrays, Easy, Completed, No
-7/29/25,1929, Concatenation of Array, arrays, Easy, Completed, No
-7/30/25,217, Contains Duplicate, arrays, Easy, Completed, No
-7/30/25,242, Valid Anagram, arrays, Easy, Completed, No
+7/28/25,228, Summary Ranges, arrays, Easy, Completed, Yes
+7/29/25,1929, Concatenation of Array, arrays, Easy, Completed, Yes
+7/30/25,217, Contains Duplicate, arrays, Easy, Completed, Yes
+7/30/25,242, Valid Anagram, arrays, Easy, Completed, Yes
 7/31/25,1, Two Sum, arrays, Easy, Completed, Yes
 7/31/25,14, Longest Common Prefix, arrays, Easy, Completed, No
 8/1/25,NA1, Old Mission DP, dynamic programming, Hard, Completed, Yes
+8/7/25,49, Group Anagrams, arrays, Medium, Completed, No
