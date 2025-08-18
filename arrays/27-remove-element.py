@@ -17,9 +17,8 @@ Was trying to find a "swap candidate".
 shrinking your second pointer, j, as you go.
 2. You can use i<=j as a loop condition to avoid unnecessary swaps.
 
-🔁 Revisit: No
+🔁 Revisit: yes
 """
-
 
 
 # Correct solution: 
