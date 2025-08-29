@@ -62,7 +62,90 @@ class Solution:
             r += 1 
 
 
+'''
+Example: [5, 2, 9, 1, 6]
 
+- Divide: [5, 2] and [9, 1, 6]
+
+Left: [5], [2].  l < r, so arr[0] = 5, and then leftover? [2]  -> [2, 5]
+Right: [9], [1, 6].  l < r, so arr[1] = 1, and then leftover? [6]
+Merge these two: 
+9 > 1, so arr[0] = r[r] = 1; 9 > 6, so arr[1] = r[1] = 6. No more right size, 
+so leftover 9 and we append, giving us [1, 6, 9]
+
+Merge [2,5] and [1,6,9] 
+2 > 1. arr[0] = 1 
+2 < 6. arr[1] = 2 
+5 > 6. arr[2] = 5 
+Run out of leftsize. Leftovers: [6,9]
+we append: [1,2,5,6,9] 
+'''
+class Solution: 
+    def merge(self, leftArray, rightArray, array):
+        # we use array so we have the "allocated space" needed to write it. 
+        l = 0, r = 0, i = 0
+
+        while leftArray and rightArray: 
+            if leftArray[l] < rightArray[r]: 
+                array[i] = leftArray[l]
+                i += 1
+                l += 1 
+            else: 
+                array[i] = rightArray[r]
+                i += 1 
+                r += 1 
+        
+        # leftovers 
+        while l < len(leftArray):
+            array[i] = leftArray[l]
+            i += 1
+            l += 1
+        
+        while r < len(rightArray):
+            array[i] = rightArray[r]
+            i += 1 
+            r += 1 
+
+
+        
+    def mergeSort(self, nums): 
+        if len(nums) <= 1: return nums
+        
+        leftArray = nums[:len(nums)//2]
+        rightArray = nums[len(nums)//2:]
+
+        self.mergeSort(leftArray) 
+        self.mergeSort(rightArray) 
+
+        # until we reach 1 we merge: 
+        self.merge(leftArray, rightArray, nums) 
+        return nums
+        
+
+
+    
+
+"""
+Quick example: [4,2,7] 
+- Choose pivot (7)
+- Partitioning: [4,2,7] -> [4,2,7]
+    Why? 4 < 7. j = 0, i = 0 (no swap)
+    2 < 7, j = 1, i = 1. [4,2,7]
+    then swap 7 to the right position (i+1 = 2) -> [4,2,7] 
+- Recursively sort left: [4,2]
+    4 < 2: i = -1, j = 0 
+    Then swap 2: arr[0], arr[high] swap -> [2,4]
+- Combine: [2,4,7]
+
+Quick example 2: [7,2,4]
+- Choose pivot (4)
+- Partitioning: [7,2,4] -> [2,4,7] 
+    Why? 7 < 4. j = 0, i = -1 
+    2 < 4, j = 1, i = 0. -> [2,7,4]
+    then swap 4 to the right position (i+1 = 1) -> [2,4,7]
+- Recursively sort left and right - [2] (base case) and [7] (base case)
+- Combine: [2,4,7]
+"""
 # Quick sort. Time and space: O(n log n) time | O(log n) space.
 # Worst case of quick sort is O(n^2) when the pivot is the smallest or largest element.
 class Solution: 
@@ -96,24 +179,3 @@ class Solution:
         return array
 
 
-'''
-Quick example: [4,2,7] 
-- Choose pivot (7)
-- Partitioning: [4,2,7] -> [4,2,7]
-    Why? 4 < 7. j = 0, i = 0 (no swap)
-    2 < 7, j = 1, i = 1. [4,2,7]
-    then swap 7 to the right position (i+1 = 2) -> [4,2,7] 
-- Recursively sort left: [4,2]
-    4 < 2: i = -1, j = 0 
-    Then swap 2: arr[0], arr[high] swap -> [2,4]
-- Combine: [2,4,7]
-
-Quick example 2: [7,2,4]
-- Choose pivot (4)
-- Partitioning: [7,2,4] -> [2,4,7] 
-    Why? 7 < 4. j = 0, i = -1 
-    2 < 4, j = 1, i = 0. -> [2,7,4]
-    then swap 4 to the right position (i+1 = 1) -> [2,4,7]
-- Recursively sort left and right - [2] (base case) and [7] (base case)
-- Combine: [2,4,7]
-'''
