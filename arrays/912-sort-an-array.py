@@ -179,3 +179,68 @@ class Solution:
         return array
 
 
+
+
+"""
+Quick example: https://www.geeksforgeeks.org/dsa/heap-sort/
+"""
+# Heap Sort: time and space: O(n log n) time | O(1) space (O(logn) for recursive space)
+class Solution: 
+    """
+    Idea: We "heapify" it. I.e. make it a max heap. We will go each parent
+
+    Left child: 2*i + 1. Right child: 2*i + 2. 
+    Thus, all indices from 0 to n//2 are parents, and all indices from n//2 to n-1 are leaves.
+
+    and get the max heap. Sometimes, recusion of a second heapify is needed because 
+    the subtree rooted at the child may violate the heap property.
+
+    How do we get the max heap? how do we sort? We swap the root with the largest leaf (if at all). 
+    Otherwise heapify won't change.
+
+
+    Then, we extract the maximum element from the heap (the root) and place it 
+    at the end of the array. We shrink the heap by removing the last element 
+    (which was the root) and then we heapify it again. and shrink until we have a single element left.
+    """
+    def heapify(self, array, n, i): 
+        """
+        Where array is the input array, n is the size of the heap, i is the current root index
+        """
+        largest = i    # Initialize largest as root 
+        left_child = 2 * i + 1 
+        right_child = 2 * i + 2
+
+        if left_child < n and array[left_child] > array[largest]: 
+            largest = left_child 
+        
+        if right_child < n and array[right_child] > array[largest]:
+            largest = right_child
+        
+        if largest != i: 
+            array[i], array[largest] = array[largest], array[i] 
+
+            # recursive, cuz might mess up order
+            self.heapify(array, n, largest)
+    
+
+    def sortArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        # We start building heap from the last parent node, all the way to node 0 (first parent)
+        for i in range(n // 2 - 1, -1, -1): 
+            self.heapify(nums, n, i) 
+        
+
+        # Extract the largest element, swap it with last, then ignore it 
+        for i in range(n - 1, 0, -1): 
+            nums[0], nums[i] = nums[i], nums[0]
+
+            # Order will be messed up (because you swap a larger element with a smaller one)
+            # Heapfiy on the reduced tree i = n-1 (one size smaller), and the root element that was sorted 
+            self.heapify(nums, i, 0) 
+
+        return nums
+
+
+
