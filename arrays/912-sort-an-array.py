@@ -244,3 +244,36 @@ class Solution:
 
 
 
+# Count Sort: Time and space - O(n + k), O(k)
+# Fast, but not if the range of numbers (k) is large. Or if there are negative numbers.
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        def countsort():
+            """
+            Pseudocode: get the largest element, then create a count array of size (largest + 1)
+            Go through the input, and populate count (with prefix sums). Then, go through the count
+            array then build output. 
+            """
+
+            largest = max(nums) 
+            count = [0] * (largest + 1) 
+            
+            for num in nums: 
+                count[num] += 1 
+            
+            # prefix sum
+            for i in range(1, len(count)): 
+                count[i] += count[i - 1]
+            
+            # Output. 
+            output = [0] * len(nums) 
+            for i in range(len(num) - 1, -1, -1): 
+                val = nums[i]     # e.g. last element
+                output[count[val] - 1] = val
+                # Explain specifically: count array gives us how many prefixes there are, including the current.
+                # So, we insert it at -1 (and reduce it since it's occupied) 
+                count[val] -= 1
+            return output
+        return countsort()
+
+
